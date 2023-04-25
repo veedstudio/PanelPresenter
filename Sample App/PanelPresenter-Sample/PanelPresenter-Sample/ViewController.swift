@@ -56,6 +56,9 @@ class ViewController: UIViewController {
 		case stack
 		case smallTableView
 		case bigTableView
+		case newSimple
+		case resizingView
+		case bigResizingView
 	}
 	
 	let stackView = UIStackView()
@@ -89,7 +92,7 @@ class ViewController: UIViewController {
 		switch type {
 		case .unsuspecting:
 			viewController = UnsuspectingViewController()
-			let panelPresenter = PanelPresenter(backgroundViewEffect: UIBlurEffect(style: .prominent))
+			let panelPresenter = PanelPresenter(viewController: viewController)
 			panelPresenter.viewController = viewController
 			return panelPresenter.present(from: self)
 			// Make sure panelPresenter is still in memory when presenting the view controller
@@ -97,6 +100,19 @@ class ViewController: UIViewController {
 		case .stack: viewController = StackViewController()
 		case .smallTableView: viewController = TableViewController()
 		case .bigTableView: viewController = TableViewController(cellCount: 86)
+		case .newSimple: viewController = NewSimpleViewController()
+		case .resizingView:
+			viewController = ResizingViewController(cellCount: 8)
+			let panelPresenter = PanelPresenter(viewController: viewController)
+			panelPresenter.viewController = viewController
+			panelPresenter.present(from: self)
+			return
+		case .bigResizingView:
+			viewController = ResizingViewController(cellCount: 86)
+			let panelPresenter = PanelPresenter(viewController: viewController)
+			panelPresenter.viewController = viewController
+			panelPresenter.present(from: self)
+			return
 		}
 		present(viewController, animated: true)
 	}
