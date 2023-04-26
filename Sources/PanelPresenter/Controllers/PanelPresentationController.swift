@@ -56,7 +56,12 @@ public class PanelPresentationController: UIPresentationController {
 	/// The default value is `false`. Setting to `true` disables auto-resizing and keeps the panel’s top below ``topInset``.
 	public var extendsToFullHeight: Bool = false { didSet {
 		guard isViewLoaded else { return }
+		updateContentScrollViewIfNeeded()
 		containerScrollViewDidUpdate(containerScrollView)
+		// Nudge the insets a little to make sure the safeAreaInsets update correctly
+		let bottom = presentedViewController.additionalSafeAreaInsets.bottom
+		presentedViewController.additionalSafeAreaInsets.bottom += 1
+		presentedViewController.additionalSafeAreaInsets.bottom = bottom
 	}}
 
 	/// Whether the tint mode of the presenting view controller’s view should be changed when presented.
@@ -385,7 +390,6 @@ extension PanelPresentationController {
 			contentOffset = containerScrollView.contentOffset
 		}
 		let opacity = max(0, min(1, contentOffset.y / 20))
-		print(opacity)
 		headerBackgroundView.alpha = opacity
 	}
 
