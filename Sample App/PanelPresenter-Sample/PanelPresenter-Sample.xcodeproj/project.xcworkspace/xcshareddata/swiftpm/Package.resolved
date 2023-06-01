@@ -3,7 +3,7 @@
     {
       "identity" : "constraintbuilder",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/PimCoumans/ConstraintBuilder",
+      "location" : "https://github.com/veedstudio/ConstraintBuilder",
       "state" : {
         "revision" : "37126aeb4e2d769f99fd3f694ae67917e36098c9",
         "version" : "1.3.0"
