@@ -399,6 +399,7 @@ extension PanelPresentationController {
 			contentScrollViewHeightConstraint = nil
 			contentHeightConstraint = nil
 			containerScrollView.alwaysBounceVertical = true
+			contentScrollViewObserver.scrollView = nil
 			return
 		}
 		scrollView.contentInsetAdjustmentBehavior = .always
