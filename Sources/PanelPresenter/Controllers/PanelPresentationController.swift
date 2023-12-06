@@ -201,7 +201,6 @@ extension PanelPresentationController {
 
 	/// Attempts to update the panel's layout, allowing the caller to perform this logic with an animation
 	public func layoutIfNeeded() {
-		containerView?.setNeedsLayout()
 		containerView?.layoutIfNeeded()
 	}
 
